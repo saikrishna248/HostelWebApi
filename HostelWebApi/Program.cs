@@ -1,6 +1,7 @@
 using HostelWebApi.Data;
-using Microsoft.EntityFrameworkCore;
+using HostelWebApi.MiddleWare;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -82,6 +83,9 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+// GLOBAL EXCEPTION HANDLER (FIRST)
+    app.UseMiddleware<GlobalExceptionMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -95,6 +99,7 @@ app.UseRouting();
 
 app.UseCors("AllowReactApp");
 
+app.UseMiddleware<JwtMiddleware>();
 app.UseAuthentication();
 
 app.UseAuthorization();

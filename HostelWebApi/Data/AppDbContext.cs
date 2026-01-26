@@ -1,4 +1,5 @@
-﻿using HostelWebApi.Models;
+﻿using HostelWebApi.Entities;
+using HostelWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HostelWebApi.Data
@@ -11,6 +12,7 @@ namespace HostelWebApi.Data
             }
 
             public DbSet<User> Users { get; set; }
-        }
+            public DbSet<SalesData> SalesData { get; set; }
+    }
     
 }

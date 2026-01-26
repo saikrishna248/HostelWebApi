@@ -19,7 +19,10 @@ namespace HostelWebApi.Controllers
         [HttpGet("summary")]
         public IActionResult GetDashboardSummary()
         {
+            var email = HttpContext.Items["Email"]?.ToString();
+            var fullName = HttpContext.Items["FullName"]?.ToString();
             // Example static data (replace with real DB data later)
+           
             var summary = new
             {
                 TotalRooms = 10,

@@ -17,6 +17,8 @@ namespace HostelWebApi.Controllers
     [ApiController]
     [AllowAnonymous]
     [Route("api/[controller]")]
+
+  //  public class AuthController(AppDbContext context, IConfiguration config) : ControllerBase
     public class AuthController : ControllerBase
     {
         //this is for database access
